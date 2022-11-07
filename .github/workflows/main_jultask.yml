@@ -24,9 +24,8 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          npm run build --if-present
-          npm run test --if-present
-      
+          npm run build-pre
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
@@ -53,4 +52,4 @@ jobs:
           app-name: 'jultask'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_42F92F6B6C4D4F3F88582E6ACDBA86C5 }}
-          package: .
+          package: dist/jultask
